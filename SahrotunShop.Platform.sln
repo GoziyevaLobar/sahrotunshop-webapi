@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33801.468
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{EF06ECE6-5A98-46E5-84F7-49710F480592}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SahrotunShop.WebApi", "src\SahrotunShop.WebApi\SahrotunShop.WebApi.csproj", "{46A0C96D-1930-4F80-8536-49585D6FB270}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SahrotunShop.Domain", "src\SahrotunShop.Domain\SahrotunShop.Domain.csproj", "{771D556B-F235-480E-B60C-7A91E799A939}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SahrotunShop.Service", "src\SahrotunShop.Service\SahrotunShop.Service.csproj", "{35890B8F-7929-41EF-AEDF-C6CB71282B9A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SahrotunShop.DataAccess", "src\SahrotunShop.DataAccess\SahrotunShop.DataAccess.csproj", "{B109C3DE-4B1C-44FA-BEC8-A6E7ACE668C9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{7B077054-D70F-45ED-A15A-ADBC190B5D39}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SahrotunShop.UnitTest", "test\TestProject1\SahrotunShop.UnitTest.csproj", "{EBFBC771-E86C-4D95-A2AC-0A01898F35E0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{46A0C96D-1930-4F80-8536-49585D6FB270}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46A0C96D-1930-4F80-8536-49585D6FB270}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46A0C96D-1930-4F80-8536-49585D6FB270}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46A0C96D-1930-4F80-8536-49585D6FB270}.Release|Any CPU.Build.0 = Release|Any CPU
+		{771D556B-F235-480E-B60C-7A91E799A939}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{771D556B-F235-480E-B60C-7A91E799A939}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{771D556B-F235-480E-B60C-7A91E799A939}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{771D556B-F235-480E-B60C-7A91E799A939}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35890B8F-7929-41EF-AEDF-C6CB71282B9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35890B8F-7929-41EF-AEDF-C6CB71282B9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35890B8F-7929-41EF-AEDF-C6CB71282B9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35890B8F-7929-41EF-AEDF-C6CB71282B9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B109C3DE-4B1C-44FA-BEC8-A6E7ACE668C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B109C3DE-4B1C-44FA-BEC8-A6E7ACE668C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B109C3DE-4B1C-44FA-BEC8-A6E7ACE668C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B109C3DE-4B1C-44FA-BEC8-A6E7ACE668C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBFBC771-E86C-4D95-A2AC-0A01898F35E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBFBC771-E86C-4D95-A2AC-0A01898F35E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBFBC771-E86C-4D95-A2AC-0A01898F35E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBFBC771-E86C-4D95-A2AC-0A01898F35E0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{46A0C96D-1930-4F80-8536-49585D6FB270} = {EF06ECE6-5A98-46E5-84F7-49710F480592}
+		{771D556B-F235-480E-B60C-7A91E799A939} = {EF06ECE6-5A98-46E5-84F7-49710F480592}
+		{35890B8F-7929-41EF-AEDF-C6CB71282B9A} = {EF06ECE6-5A98-46E5-84F7-49710F480592}
+		{B109C3DE-4B1C-44FA-BEC8-A6E7ACE668C9} = {EF06ECE6-5A98-46E5-84F7-49710F480592}
+		{EBFBC771-E86C-4D95-A2AC-0A01898F35E0} = {7B077054-D70F-45ED-A15A-ADBC190B5D39}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BCF8997B-1EEA-4F29-8412-18B4F45DB7D6}
+	EndGlobalSection
+EndGlobal
