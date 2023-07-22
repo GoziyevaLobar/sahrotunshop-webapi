@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SahrotunShop.Domain.Exceptions.Products
+﻿namespace SahrotunShop.Domain.Exceptions.Products;
+public class ProductNotFoundException : NotFoundException
 {
-    internal class ProductNotFoundException
+    public ProductNotFoundException()
     {
+        this.TitleMessage = "ProductNotFound!";
     }
 }

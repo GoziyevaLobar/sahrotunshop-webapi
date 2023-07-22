@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace SahrotunShop.Domain.Exceptions.Deliveries;
 
-namespace SahrotunShop.Domain.Exceptions.Deliveries
+public class DeliveryNotFoundException :NotFoundException
 {
-    internal class DeliveryNotFoundException
+    public DeliveryNotFoundException()
     {
+        this.TitleMessage = "Delivery not found!";
     }
 }

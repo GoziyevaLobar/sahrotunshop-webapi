@@ -7,17 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Constants\" />
     <Folder Include="Entities\Users\" />
-    <Folder Include="Entities\Categories\" />
-    <Folder Include="Entities\Companies\" />
-    <Folder Include="Entities\Orders\" />
-    <Folder Include="Entities\Products\" />
-    <Folder Include="Entities\Discounts\" />
-    <Folder Include="Entities\Deliveries\" />
-    <Folder Include="Entities\Suppliers\" />
-    <Folder Include="Enums\" />
-    <Folder Include="Exceptions\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.143" />
+    <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.2.7" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="7.0.0" />
+    <PackageReference Include="Npgsql" Version="7.0.4" />
   </ItemGroup>
 
 </Project>

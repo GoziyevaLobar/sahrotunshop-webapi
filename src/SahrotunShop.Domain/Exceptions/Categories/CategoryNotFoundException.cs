@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace SahrotunShop.Domain.Exceptions.Categories;
 
-namespace SahrotunShop.Domain.Exceptions.Categories
+public class CategoryNotFoundException : NotFoundException
 {
-    internal class CategoryNotFoundException
+    public CategoryNotFoundException()
     {
+        this.TitleMessage = "Category not found!";
     }
 }

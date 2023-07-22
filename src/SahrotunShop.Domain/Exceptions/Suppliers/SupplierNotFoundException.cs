@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace SahrotunShop.Domain.Exceptions.Suppliers;
 
-namespace SahrotunShop.Domain.Exceptions.Suppliers
+internal class SupplierNotFoundException : NotFoundException
 {
-    internal class SupplierNotFoundException
+    public SupplierNotFoundException()
     {
+        this.TitleMessage = "Supplier Not Found!";
     }
 }
+

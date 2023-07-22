@@ -12,8 +12,6 @@ namespace SahrotunShop.Domain.Entities.Discounts
         [MaxLength(50)]
         public string Name { get; set; } = String.Empty;
 
-        public string Description { get; set; } = String.Empty;
-
-        public short Persentage { get; set; }       
+        public string Description { get; set; } = String.Empty;       
     }
 }

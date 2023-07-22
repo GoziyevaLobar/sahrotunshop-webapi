@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace SahrotunShop.Domain.Exceptions.Discounts;
 
-namespace SahrotunShop.Domain.Exceptions.Discounts
+public class DiscountNotFoundException : NotFoundException
 {
-    internal class DiscountNotFoundException
+    public DiscountNotFoundException()
     {
+        this.TitleMessage = "Discount Not Found!";
     }
 }

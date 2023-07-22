@@ -18,6 +18,7 @@ create table companies
 	created_at timestamp without time zone default now(),
 	updated_at timestamp without time zone default now()
 );
+
 create table products
 (
 	id bigint generated always as identity primary key,
@@ -36,7 +37,6 @@ create table discounts
 	id bigint generated always as identity primary key,
 	name varchar(50) not null,
 	description text,
-	percentage integer not null,
 	created_at timestamp without time zone default now(),
 	updated_at timestamp without time zone default now()
 );
@@ -47,6 +47,7 @@ create table product_discounts
 	product_id bigint references products (id),
 	discount_id bigint references discounts (id),
 	description text,
+	percentage smallint,
 	start_at timestamp without time zone not null,
 	end_at timestamp without time zone not null,
 	created_at timestamp without time zone default now(),
@@ -90,6 +91,7 @@ create table users
 	region text,
 	password_hash text not null,
 	salt text not null,
+	image_path text not null,
 	last_activity timestamp without time zone default now(),
 	identity_role text not null,
 	created_at timestamp without time zone default now(),
@@ -130,13 +132,13 @@ create table orders
 (
 	id bigint generated always as identity primary key,
 	user_id bigint references users (id),
-	deliver_id bigint references deliveries (id),
+	delivery_id bigint references deliveries (id),
 	status text not null,
-	product_price double PRECISION  not null, --summ all items of order details -> result_price
-	delivery_price double PRECISION not null, 
-	result_price double PRECISION not null, --at total_price + delivery price
-	lattitude double PRECISION  not null,
-	longitude double PRECISION  not null,
+	products_price double PRECISION not null, -- summ all items of order details -> result_price
+	delivery_price double PRECISION not null,
+	result_price double PRECISION not null, -- add total_price + delivery price
+	latitude double PRECISION not null,
+	longitude double PRECISION not null,
 	payment_type text not null,
 	is_paid bool not null,
 	is_contracted bool not null,
@@ -151,20 +153,10 @@ create table order_details
 	order_id bigint references orders (id),
 	product_id bigint references products (id),
 	quantity integer not null,
-	total_price double PRECISION  not null, --product price*quantity
-	discount_price double PRECISION  not null, --discount -> start_at & end_at(product_id, current_datatime)
-	result_price double PRECISION not null, --total price - discount_price
+	total_price double PRECISION not null, -- product prise * quantity
+	discount_price double PRECISION not null, -- discount -> start_at & end_at (product_id, current_datetime)
+	result_price double PRECISION not null, -- total_price - discount_price
 	created_at timestamp without time zone default now(),
 	updated_at timestamp without time zone default now()
 );
-
-
-
-
-
-
-
-
-
-
-
+SET TIMEZONE TO 'UTC';

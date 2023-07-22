@@ -4,5 +4,8 @@ namespace SahrotunShop.Domain.Exceptions.Users;
 
 public class UserNotFoundException : NotFoundException
 {
-    CallConvThiscall
+    public UserNotFoundException()
+    {
+        this.TitleMessage = "User not found";
+    }
 }
