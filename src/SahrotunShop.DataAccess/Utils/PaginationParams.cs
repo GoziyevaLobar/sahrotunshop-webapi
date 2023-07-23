@@ -6,11 +6,14 @@ public class PaginationParams
 
     public int PageSize { get; set; } 
     
-    public int ScipCount
+    public PaginationParams(int pageNumber, int pageSize)
     {
-        get
-        {
-            return (PageNumber - 1) * PageSize; 
-        }
+        PageNumber = pageNumber;
+        PageSize = pageSize;
+    }
+    public int GetScipCount()
+    {
+        return (PageNumber - 1) * PageSize; 
+        
     }
 }
