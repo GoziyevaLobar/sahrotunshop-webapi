@@ -6,6 +6,7 @@ using SahrotunShop.Domain.Entities.Categories;
 using SahrotunShop.Service.Common.Helpers;
 using SahrotunShop.Service.Dtos.Categories;
 using SahrotunShop.Service.Interfaces.Categories;
+using SahrotunShop.Service.Validators.Dtos.Categories;
 
 namespace SahrotunShop.WebApi.Controllers;
 
@@ -35,11 +36,30 @@ public class CategoriesController : ControllerBase
 
     [HttpPost]
     public async Task<IActionResult> CreateAsync([FromForm] CategoryCreateDto dto)
-    =>Ok(await _service.CreateAsync(dto));
+    {
+        var createValidator = new CategoryCreateValidator();
+        var result = createValidator.Validate(dto);
+        if (result.IsValid) return Ok(await _service.CreateAsync(dto));
+        else
+        {
+            return BadRequest(result.Errors);
+        }
+    }
+
 
     [HttpPut("{categoryId}")]
-    public async Task<IActionResult> UpdateAsync(long categoryId, [FromForm] CategoryUpdateDto dto) 
-        => Ok(await _service.UpdateAsync(categoryId, dto)); 
+    public async Task<IActionResult> UpdateAsync(long categoryId, [FromForm] CategoryUpdateDto dto)
+    {
+        var updateValidator = new CategoryUpdateValidator();
+        var validationResult = updateValidator.Validate(dto);
+        if (validationResult.IsValid) return Ok(await _service.UpdateAsync(categoryId, dto));
+        else
+        {
+            return BadRequest(validationResult.Errors);
+        }
+    }
+
+
 
     [HttpDelete("{categoryId}")]
 

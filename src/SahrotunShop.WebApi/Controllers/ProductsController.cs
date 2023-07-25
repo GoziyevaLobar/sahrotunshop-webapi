@@ -6,5 +6,4 @@ namespace SahrotunShop.WebApi.Controllers;
 [ApiController]
 public class ProductsController : ControllerBase    
 {
-
 }

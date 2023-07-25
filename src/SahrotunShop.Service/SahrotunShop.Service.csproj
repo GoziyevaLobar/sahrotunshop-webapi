@@ -11,10 +11,13 @@
     <Folder Include="Common\Validations\" />
     <Folder Include="Common\Security\" />
     <Folder Include="Common\Exceptions\" />
+    <Folder Include="Validators\Dtos\Orders\" />
+    <Folder Include="Validators\Dtos\Discounts\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Dapper" Version="2.0.143" />
+    <PackageReference Include="FluentValidation" Version="11.6.0" />
     <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.2.7" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
     <PackageReference Include="Npgsql" Version="7.0.4" />
