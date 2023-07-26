@@ -11,7 +11,7 @@ public class PaginationParams
         PageNumber = pageNumber;
         PageSize = pageSize;
     }
-    public int GetScipCount()
+    public int GetSkipCount()
     {
         return (PageNumber - 1) * PageSize; 
         

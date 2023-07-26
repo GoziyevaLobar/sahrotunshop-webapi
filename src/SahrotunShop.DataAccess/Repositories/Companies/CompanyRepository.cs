@@ -1,39 +1,130 @@
-﻿using SahrotunShop.DataAccess.Interfaces.Companies;
+﻿using Dapper;
+using SahrotunShop.DataAccess.Interfaces.Companies;
 using SahrotunShop.DataAccess.Utils;
 using SahrotunShop.Domain.Entities.Companies;
 
 namespace SahrotunShop.DataAccess.Repositories.Companies
 {
-    public class CompanyRepository : ICompanyRepository
+    public class CompanyRepository : BaseRepository, ICompanyRepository
     {
-        public Task<long> CountAsync()
+        public async Task<long> CountAsync()
         {
-            throw new NotImplementedException();
+            try
+            {
+                await _connection.OpenAsync();
+                string query = $"select count(*) from companies";
+                var result = await _connection.QuerySingleAsync<long>(query);
+                return result;
+            }
+            catch
+            {
+                return 0;
+            }
+            finally
+            {
+                await _connection.CloseAsync();
+            }
         }
 
-        public Task<int> CreateAsync(Company entity)
+        public async Task<int> CreateAsync(Company entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                await _connection.OpenAsync();
+                string query = "INSERT INTO public.companies(name, description, image_path, phone_number, created_at, updated_at) " +
+                    "VALUES (@Name, @Description, @ImagePath, @PhoneNumber, @CreatedAt, @UpdatedAt);";
+                var result = await _connection.ExecuteAsync(query, entity);
+                return result;
+            }
+            catch
+            {
+                return 0;
+            }
+            finally
+            {
+                await _connection.CloseAsync();
+            }
         }
 
-        public Task<int> DeleteAsync(long id)
+        public async Task<int> DeleteAsync(long id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                await _connection.OpenAsync();
+                string query = $"delete from companies where id = @Id";
+                var result = await _connection.ExecuteAsync(query, new { Id = id });
+                return result;
+            }
+            catch
+            {
+                return 0;
+            }
+            finally
+            {
+                await _connection.CloseAsync();
+            }
         }
 
-        public Task<IList<Company>> GetAllAsync(PaginationParams @params)
+        public async Task<IList<Company>> GetAllAsync(PaginationParams @params)
         {
-            throw new NotImplementedException();
+            try
+            {
+                await _connection.OpenAsync();
+                string query = $"select * from companies " +
+                    $"order by id desc " +
+                    $"offset {@params.GetSkipCount()} limit {@params.PageSize}";
+                var result = (await _connection.QueryAsync<Company>(query)).ToList();
+                return result;
+            }
+            catch
+            {
+                return new List<Company>();
+            }
+            finally
+            {
+                await _connection.CloseAsync();
+            }
         }
 
-        public Task<Company?> GetByIdAsync(long id)
+        public async Task<Company?> GetByIdAsync(long id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                await _connection.OpenAsync();
+                string query = $"select * from companies where id = {id}";
+                var result = await _connection.QuerySingleAsync<Company>(query);
+                return result;
+            }
+            catch
+            {
+                return null;
+            }
+            finally
+            {
+                await _connection.CloseAsync();
+            }
         }
 
-        public Task<int> UpdateAsync(long id, Company entity)
+        public async Task<int> UpdateAsync(long id, Company entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                await _connection.OpenAsync();
+                string query = "UPDATE public.companies " +
+                    "SET name=@Name, description=@Description, image_path=@ImagePath, " +
+                    "phone_number=@PhoneNumber, created_at=@CreatedAt, updated_at=@UpdatedAt " +
+                    $"WHERE id = {id};";
+                var result = await _connection.ExecuteAsync(query, entity);
+                return result;
+            }
+            catch
+            {
+                return 0;
+            }
+            finally
+            {
+                await _connection.CloseAsync();
+            }
         }
     }
 }

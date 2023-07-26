@@ -1,4 +1,6 @@
-﻿namespace SahrotunShop.Service.Services.Common;
+﻿using SahrotunShop.Service.Interfaces.Common;
+
+namespace SahrotunShop.Service.Services.Common;
 
 public class ShortStorageService : IShortStorageService
 {
