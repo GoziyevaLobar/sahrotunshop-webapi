@@ -1,4 +1,5 @@
-﻿using SahrotunShop.DataAccess.Interfaces.Categories;
+﻿using Microsoft.Extensions.Caching.Memory;
+using SahrotunShop.DataAccess.Interfaces.Categories;
 using SahrotunShop.DataAccess.Utils;
 using SahrotunShop.Domain.Entities.Categories;
 using SahrotunShop.Domain.Exceptions.Categories;
@@ -14,14 +15,18 @@ public class CategoryService : ICategoryService
 {
     private readonly ICategoryRepository _repository;
     private readonly IFileService _fileService;
+    private readonly IMemoryCache _memoryCache;
+    private readonly IPaginator _paginator;
 
     public CategoryService(ICategoryRepository categoryRepository,
-        IFileService fileService)
+        IFileService fileService,
+        IMemoryCache memoryCache,
+        IPaginator paginator)
     {
         this._repository = categoryRepository;
         this._fileService = fileService;
-
-
+        this._memoryCache = memoryCache;
+        this._paginator = paginator;
     }
 
     public async Task<long> CountAsync() => await _repository.CountAsync();
@@ -38,7 +43,7 @@ public class CategoryService : ICategoryService
             UpdatedAt = TimeHelper.GetDateTime()
         };
         var result = await _repository.CreateAsync(category);
-        return result>0;
+        return result > 0;
     }
 
     public async Task<bool> DeleteAsync(long categoryId)
@@ -56,40 +61,38 @@ public class CategoryService : ICategoryService
     public async Task<IList<Category>> GetAllAsync(PaginationParams @params)
     {
         var categories = await _repository.GetAllAsync(@params);
+        var count = await _repository.CountAsync();
+        _paginator.Paginate(count, @params);
         return categories;
-    } 
+    }
 
     public async Task<Category> GetByIdAsync(long categoryId)
     {
         var category = await _repository.GetByIdAsync(categoryId);
         if (category is null) throw new CategoryNotFoundException();
-        else return category;
+        return category;
     }
 
     public async Task<bool> UpdateAsync(long categoryId, CategoryUpdateDto dto)
-        {
+    {
         var category = await _repository.GetByIdAsync(categoryId);
         if (category is null) throw new CategoryNotFoundException();
 
         // parse new items to category
-
         category.Name = dto.Name;
-        category.Description = dto.Description; 
+        category.Description = dto.Description;
 
-        if(dto.Image is not null)
+        if (dto.Image is not null)
         {
-            //delete old image
-
+            // delete old image
             var deleteResult = await _fileService.DeleteImageAsync(category.ImagePath);
-            if(deleteResult is false) throw new ImageNotFoundException();
+            if (deleteResult is false) throw new ImageNotFoundException();
 
             // upload new image
-
             string newImagePath = await _fileService.UploadImageAsync(dto.Image);
 
             // parse new path to category
-            category.ImagePath = newImagePath;  
-
+            category.ImagePath = newImagePath;
         }
         // else category old image have to save
 

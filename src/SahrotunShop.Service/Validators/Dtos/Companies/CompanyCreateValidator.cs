@@ -12,6 +12,9 @@ public class CompanyCreateValidator : AbstractValidator<CompanyCreateDto>
             .MinimumLength(3).WithMessage("Company name must be more than 3 characters!")
             .MaximumLength(50).WithMessage("Company name must be less than 50 characters!");
 
+        RuleFor(dto => dto.Description).NotNull().NotEmpty().WithMessage("Description field is required!")
+            .MinimumLength(20).WithMessage("Description field is required!");
+
         RuleFor(dto => dto.PhoneNumber).NotNull().NotEmpty().WithMessage("Company phone number is required!")
             .Must(phone => PhoneNumberValidator.IsValid(phone)).WithMessage("Phone number is incorrect!");
 

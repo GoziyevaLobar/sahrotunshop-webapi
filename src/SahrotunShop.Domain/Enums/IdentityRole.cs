@@ -2,5 +2,5 @@
 
 public enum IdentityRole
 {
-    Admin = 1, User = 0, Deliver = -1
+    Admin = 1, User = 0
 }

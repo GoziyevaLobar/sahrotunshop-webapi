@@ -8,16 +8,15 @@ namespace SahrotunShop.Domain.Entities.Users;
 public class User : Human
 {
     [MaxLength(13)]
-    public string PhoneNumber { get; set; } = string.Empty;
+    public string PhoneNumber { get; set; } = String.Empty;
 
     public bool PhoneNumberConfirmed { get; set; }
 
-    public string PasswordHash { get; set; } = string.Empty;
+    public string PasswordHash { get; set; } = String.Empty;
 
-    public string Salt { get; set; } = string.Empty;
+    public string Salt { get; set; } = String.Empty;
 
     public DateTime LastActivity { get; set; }
 
-    public IdentityRole Role { get; set; }
-
+    public IdentityRole IdentityRole { get; set; }
 }
