@@ -16,7 +16,7 @@ namespace SahrotunShop.WebApi.Controllers;
 public class CategoriesController : ControllerBase
 {
     private readonly ICategoryService _service;
-    private readonly int maxPageSize = 30;
+    private readonly int maxPageSize = 3;
 
     public CategoriesController(ICategoryService service)
     {

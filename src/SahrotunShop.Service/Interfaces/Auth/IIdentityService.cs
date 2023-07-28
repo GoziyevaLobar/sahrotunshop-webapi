@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using SahrotunShop.Domain.Enums;
 
 namespace SahrotunShop.Service.Interfaces.Auth;
 
@@ -12,5 +12,5 @@ public interface IIdentityService
     
     public string PhoneNumber { get; } 
 
-    public IdentityRole IdentityRole { get; }         
+    public IdentityRole? IdentityRole { get; }         
 }
