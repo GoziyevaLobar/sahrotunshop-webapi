@@ -1,17 +1,15 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Caching.Memory;
-using SahrotunShop.DataAccess.Interfaces.Users;
-using SahrotunShop.DataAccess.Repositories.Users;
+﻿using SahrotunShop.DataAccess.Interfaces.Users;
 using SahrotunShop.Domain.Entities.Users;
 using SahrotunShop.Domain.Exceptions.Auth;
 using SahrotunShop.Domain.Exceptions.Users;
 using SahrotunShop.Service.Common.Helpers;
 using SahrotunShop.Service.Common.Security;
 using SahrotunShop.Service.Dtos.Auth;
-using SahrotunShop.Service.Dtos.Notifcations;
 using SahrotunShop.Service.Dtos.Security;
 using SahrotunShop.Service.Interfaces.Auth;
 using SahrotunShop.Service.Interfaces.Notifcations;
+using Microsoft.Extensions.Caching.Memory;
+using SahrotunShop.Service.Dtos.Notifcations;
 
 namespace SahrotunShop.Service.Services.Auth;
 
@@ -74,14 +72,15 @@ public class AuthService : IAuthService
             _memoryCache.Set(VERIFY_REGISTER_CACHE_KEY + phone, verificationDto,
                 TimeSpan.FromMinutes(CACHED_MINUTES_FOR_VERIFICATION));
 
-            SmsMessage smsMessage = new SmsMessage();
-            smsMessage.Title = "Sahrotun Shop";
-            smsMessage.Content = "Your verification code : " + verificationDto.Code;
-            smsMessage.Recipent = phone.Substring(1);
+            //SmsMessage smsMessage = new SmsMessage();
+            //smsMessage.Title = "Sahrotun Shop";
+            //smsMessage.Content = "Your verification code : " + verificationDto.Code;
+            //smsMessage.Recipent = phone.Substring(1);
 
-            var smsResult = await _smsSender.SendAsync(smsMessage);
-            if (smsResult is true) return (Result: true, CachedVerificationMinutes: CACHED_MINUTES_FOR_VERIFICATION);
-            else return (Result: false, CachedVerificationMinutes: 0);
+            //var smsResult = await _smsSender.SendAsync(smsMessage);
+            //if (smsResult is true) return (Result: true, CachedVerificationMinutes: CACHED_MINUTES_FOR_VERIFICATION);
+            //else
+            return (Result: false, CachedVerificationMinutes: 0);
         }
         else throw new UserCacheDataExpiredException();
     }

@@ -102,9 +102,4 @@ public class UserRepository : BaseRepository, IUserRepository
     {
         throw new NotImplementedException();
     }
-
-    Task<UserViewModel?> IUserRepository.GetByPhoneAsync(string phone)
-    {
-        throw new NotImplementedException();
-    }
 }

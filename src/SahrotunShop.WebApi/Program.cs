@@ -19,6 +19,7 @@ using SahrotunShop.Service.Services.Common;
 using SahrotunShop.Service.Services.Companies;
 using SahrotunShop.Service.Services.Discounts;
 using SahrotunShop.Service.Services.Notifications;
+using SahrotunShop.WebApi.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -43,6 +44,7 @@ builder.Services.AddScoped<IDiscountRepository, DiscountRepository>();
 builder.Services.AddScoped<IPaginator, Paginator>();
 
 builder.Services.AddSingleton<ISmsSender, SmsSender>();
+builder.ConfigurateJwtAuth();
 //-->
 
 

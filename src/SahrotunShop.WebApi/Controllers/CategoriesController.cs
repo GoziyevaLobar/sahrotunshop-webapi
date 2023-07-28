@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SahrotunShop.DataAccess.Interfaces.Categories;
 using SahrotunShop.DataAccess.Repositories.Categories;
 using SahrotunShop.DataAccess.Utils;
@@ -22,19 +23,23 @@ public class CategoriesController : ControllerBase
         this._service = service;
     }
     [HttpGet]
+    [AllowAnonymous]
     public async Task<IActionResult> GetAllAsync([FromQuery] int page = 1)
         =>Ok(await _service.GetAllAsync(new PaginationParams(page, maxPageSize)));
 
     [HttpGet("{categoryId}")]
+    [AllowAnonymous]
     public async Task<IActionResult> GetByIdAsync(long categoryId)
             => Ok(await _service.GetByIdAsync(categoryId));
 
     [HttpGet("count")]
+    [AllowAnonymous]
     public async Task<IActionResult> CountAsync()
         => Ok(await _service.CountAsync());
 
 
     [HttpPost]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> CreateAsync([FromForm] CategoryCreateDto dto)
     {
         var createValidator = new CategoryCreateValidator();
@@ -48,6 +53,7 @@ public class CategoriesController : ControllerBase
 
 
     [HttpPut("{categoryId}")]
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> UpdateAsync(long categoryId, [FromForm] CategoryUpdateDto dto)
     {
         var updateValidator = new CategoryUpdateValidator();
