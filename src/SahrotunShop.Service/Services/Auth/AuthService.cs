@@ -72,15 +72,15 @@ public class AuthService : IAuthService
             _memoryCache.Set(VERIFY_REGISTER_CACHE_KEY + phone, verificationDto,
                 TimeSpan.FromMinutes(CACHED_MINUTES_FOR_VERIFICATION));
 
-            //SmsMessage smsMessage = new SmsMessage();
-            //smsMessage.Title = "Sahrotun Shop";
-            //smsMessage.Content = "Your verification code : " + verificationDto.Code;
-            //smsMessage.Recipent = phone.Substring(1);
+            SmsMessage smsMessage = new SmsMessage();
+            smsMessage.Title = "Sahrotun Shop";
+            smsMessage.Content = "Your verification code : " + verificationDto.Code;
+            smsMessage.Recipent = phone.Substring(1);
 
-            //var smsResult = await _smsSender.SendAsync(smsMessage);
-            //if (smsResult is true) return (Result: true, CachedVerificationMinutes: CACHED_MINUTES_FOR_VERIFICATION);
-            //else
-            return (Result: false, CachedVerificationMinutes: 0);
+            var smsResult = await _smsSender.SendAsync(smsMessage);
+            if (smsResult is true) return (Result: true, CachedVerificationMinutes: CACHED_MINUTES_FOR_VERIFICATION);
+            else
+                return (Result: false, CachedVerificationMinutes: 0);
         }
         else throw new UserCacheDataExpiredException();
     }
