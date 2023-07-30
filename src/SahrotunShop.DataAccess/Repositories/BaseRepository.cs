@@ -16,6 +16,6 @@ public class BaseRepository
             "Port = 5432;" +
             "Database = sahrotunShop-db;" +
             "User Id = postgres;" +
-            "Password = 0409;");
+            "Password = root;");
     }
 }
