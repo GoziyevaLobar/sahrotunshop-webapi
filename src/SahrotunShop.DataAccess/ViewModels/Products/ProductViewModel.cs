@@ -1,6 +1,8 @@
-﻿namespace SahrotunShop.DataAccess.ViewModels.Products;  
+﻿using SahrotunShop.Domain.Entities;
 
-public class ProductViewModel
+namespace SahrotunShop.DataAccess.ViewModels.Products;  
+
+public class ProductViewModel : Auditable
 {
     public string Name { get; set; } = String.Empty;
 

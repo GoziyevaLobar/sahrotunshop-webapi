@@ -5,9 +5,6 @@ namespace SahrotunShop.Service.Dtos.Categories;
 
 public class CategoryCreateDto
 {
-    [Required(ErrorMessage = "Name is required")]
-    [MaxLength(50, ErrorMessage = "Name must be less than 50 characters")]
-    [MinLength(3, ErrorMessage = "Name must be more than 50 characters")]
 
     public string Name { get; set; } = String.Empty;
 
