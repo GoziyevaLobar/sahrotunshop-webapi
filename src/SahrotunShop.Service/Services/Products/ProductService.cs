@@ -27,6 +27,9 @@ public class ProductService : IProductService
         this._fileService = fileService;
         this._paginator = paginator;
     }
+
+    public async Task<long> CountAsync() => await _repository.CountAsync();
+
     public async Task<bool> CreateAsync(ProductCreateDto dto)
     {
         string imagepath = await _fileService.UploadImageAsync(dto.Image);
@@ -96,7 +99,20 @@ public class ProductService : IProductService
 
         product.UpdatedAt = TimeHelper.GetDateTime();
 
-        var dbResult = await _repository.UpdateAsync(productId, product);
+        Product product1 = new Product();
+
+        product1.Id = product.Id;
+        product1.Name = product.Name;
+        product1.Description = product.Description; 
+        product1.UnitPrice = product.UnitPrice;
+        product1.CategoryId = product.CategoryId;
+        product1.CompanyId = product.CompanyId;
+        product1.CreatedAt = product.CreatedAt;
+        product1.UpdatedAt = product1.UpdatedAt;
+
+
+        var dbResult = await _repository.UpdateAsync(productId, product1);
         return dbResult > 0;
     }
 }
+    

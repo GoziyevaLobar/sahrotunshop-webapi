@@ -13,6 +13,8 @@ public interface IProductService
 
     public Task<IList<ProductViewModel>> GetAllAsync(PaginationParams @params);
 
+    public Task<long> CountAsync();
+
     public Task<ProductViewModel> GetByIdAsync(long productId);
 
     public Task<bool> UpdateAsync(long productId, ProductUpdateDto dto);

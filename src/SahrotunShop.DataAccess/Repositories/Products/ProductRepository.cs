@@ -118,7 +118,7 @@ public class ProductRepository :BaseRepository, IProductRepository
         {
             await _connection.OpenAsync();
             string query = "UPDATE public.products " +
-                "SET name=@Name, description=@Description, image_path=@ImagePath, " +
+                "SET name=@Name, description=@Description, image_path=@ImagePath, category_Id=@CategoryId, company_Id = @CompanyId " +
                 "unit_price=@UnitPrice, created_at=@CreatedAt, updated_at=@UpdatedAt " +
                 $"WHERE id = {id};";
             var result = await _connection.ExecuteAsync(query, entity);
