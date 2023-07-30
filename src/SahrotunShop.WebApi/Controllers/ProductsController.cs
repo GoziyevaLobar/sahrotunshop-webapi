@@ -37,7 +37,7 @@ public class ProductsController : ControllerBase
 
 
     [HttpPost]
-   [Authorize(Roles = "User")]
+   [Authorize(Roles = "Admin")]
     public async Task<IActionResult> CreateAsync([FromForm] ProductCreateDto dto)
     {
         var createValidator = new ProductCreateValidator();
