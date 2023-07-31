@@ -51,7 +51,7 @@ public class ProductsController : ControllerBase
 
 
     [HttpPut("{productId}")]
-    [Authorize(Roles = "Admin")]
+   /// [Authorize(Roles = "Admin")]
     public async Task<IActionResult> UpdateAsync(long productId, [FromForm] ProductUpdateDto dto)
     {
         var updateValidator = new ProductUpdateValidator();

@@ -103,7 +103,8 @@ public class ProductService : IProductService
 
         product1.Id = product.Id;
         product1.Name = product.Name;
-        product1.Description = product.Description; 
+        product1.Description = product.Description;
+        product1.ImagePath = product.ImagePath;
         product1.UnitPrice = product.UnitPrice;
         product1.CategoryId = product.CategoryId;
         product1.CompanyId = product.CompanyId;
